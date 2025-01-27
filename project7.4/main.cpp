@@ -1,3 +1,14 @@
+/*Ryan Tang | 1/26/2025 | CS 110B with instructor David Harden | project7.4/main.cpp
+
+This is a variant of a blackjack game. The player receives two cards. 
+They are prompted with the decision to draw another card until they are
+ready to stop or they bust. The player wins if the sum of their cards reach 21 exactly.
+
+The prompts to the player are to draw another card (y/n), or to play again (y/n).
+Outputs include the cards drawn, the sum, and whether the player has won or busted.
+*/
+
+
 #include <iostream>
 #include <cstdlib>
 using namespace std;
