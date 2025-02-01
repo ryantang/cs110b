@@ -1,4 +1,7 @@
-/*Ryan Tang | 1/29/2025 | CS 110B with instructor David Harden | project4.5/main.cpp
+/* Ryan Tang | 1/29/2025 | CS 110B with instructor David Harden | project4.5/main.cpp
+This program is a number guessing game prompts the user to think of a number between 1 and 100.
+The program then guesses a number, prompts the user to enter 'l' if the number is lower, 'h' if the number is higher, 
+or 'c' if the number is correct. Upon completion, the program asks the user if they would like to play again.
 */
 
 #include <iostream>
@@ -23,6 +26,10 @@ int main() {
     }
 }
 
+/* playOneGame() is the main function that runs the game. 
+It takes no parameters and has no return value.
+playOneGame() prompts the user to think of a number between 1 and 100.
+It then uses a binary search algorithm to guess the number. */
 void playOneGame() {
     int low = LOWER_LIMIT;
     int high = UPPER_LIMIT;
@@ -43,12 +50,16 @@ void playOneGame() {
     }
 }
 
-void getUserResponseToGuess(int mid, char& result)
+//getUserResponseToGuess takes a guess variable (int) and a reference to a result variable (char). 
+//It prompts the user to enter 'l', 'h', or 'c' and stores the response in the char variable.
+void getUserResponseToGuess(int guess, char& result)
 {
-    cout << "My guess is " << mid << ". Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: ";
+    cout << "My guess is " << guess << ". Enter 'l' if your number is lower, 'h' if it is higher, 'c' if it is correct: ";
     cin >> result;
 }
 
+//getMidpoint takes two integers, low and high, and returns the midpoint of the two numbers.
+//when the midpoint is calculated, it is rounded down to the nearest whole number.
 int getMidpoint(int low, int high)
 {
     return (low + high) / 2;
