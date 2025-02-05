@@ -14,7 +14,7 @@ bool containsStraight(const int hand[]);
 bool containsFullHouse(const int hand[]);
 bool containsFourOfaKind(const int hand[]);
 void runTests();
-void countCards(vector<int> &cardsByValues, const int hand[]);
+vector<int> countCards(const int hand[]);
 
 int main() {
     int hand[HAND_SIZE];
@@ -39,13 +39,12 @@ int main() {
     } else if (containsPair(hand)) {
         cout << "Pair!" << endl;
     } else {
-        cout << "High Card!" << endl;
+        cout << "High card!" << endl;
     }
 }
 
 bool containsPair(const int hand[]) {
-    vector<int> cardsByValues(HIGHEST_NUM + 1);
-    countCards(cardsByValues, hand);
+    vector<int> cardsByValues = countCards(hand);
     for (int i = LOWEST_NUM; i <= HIGHEST_NUM; i++) {
         if (cardsByValues[i] == 2) {
             return true;
@@ -54,10 +53,11 @@ bool containsPair(const int hand[]) {
     return false;
 }
 
+
+
 bool containsTwoPair(const int hand[]) {
-    vector<int> cardsByValues(HIGHEST_NUM + 1);
+    vector<int> cardsByValues = countCards(hand);
     int pairs = 0;
-    countCards(cardsByValues, hand);
     for (int i = LOWEST_NUM; i <= HIGHEST_NUM; i++) {
         if (cardsByValues[i] == 2) {
             pairs++;
@@ -67,8 +67,7 @@ bool containsTwoPair(const int hand[]) {
 }
 
 bool containsThreeOfaKind(const int hand[]) {
-    vector<int> cardsByValues(HIGHEST_NUM + 1);
-    countCards(cardsByValues, hand);
+    vector<int> cardsByValues = countCards(hand);
     for (int i = LOWEST_NUM; i <= HIGHEST_NUM; i++) {
         if (cardsByValues[i] == 3) {
             return true;
@@ -78,8 +77,7 @@ bool containsThreeOfaKind(const int hand[]) {
 }
 
 bool containsStraight(const int hand[]) {
-    vector<int> cardsByValues(HIGHEST_NUM + 1);
-    countCards(cardsByValues, hand);
+    vector<int> cardsByValues = countCards(hand);
     for (int i = LOWEST_NUM; i <= HIGHEST_NUM - 4; i++) {
         if (cardsByValues[i] == 1 && cardsByValues[i + 1] == 1 && 
             cardsByValues[i + 2] == 1 && cardsByValues[i + 3] == 1 && 
@@ -95,8 +93,7 @@ bool containsFullHouse(const int hand[]) {
 }
 
 bool containsFourOfaKind(const int hand[]) {
-    vector<int> cardsByValues(HIGHEST_NUM + 1);
-    countCards(cardsByValues, hand);
+    vector<int> cardsByValues = countCards(hand);
     for (int i = LOWEST_NUM; i <= HIGHEST_NUM; i++) {
         if (cardsByValues[i] >= 4) {
             return true;
@@ -105,16 +102,18 @@ bool containsFourOfaKind(const int hand[]) {
     return false;
 }
 
-void countCards(vector<int> &cardsByValues, const int hand[]) {
+vector<int> countCards(const int hand[]) {
     // Create a vector to store the number of cards with each value, 
     // using the value as the index. 
     // For example, if hand is {2, 3, 3, 5, 5},
     // cardsByValues[2] = 1 (there is one two), 
     // cardsByValues[3] = 2 (there are two three's),
     // cardsByValues[5] = 2 (there are two fives).
+    vector<int> cardsByValues(HIGHEST_NUM + 1);
     for (int i = 0; i < HAND_SIZE; i++) {
         cardsByValues[hand[i]]++;
     }
+    return cardsByValues;
 }
 
 void runTests() {
