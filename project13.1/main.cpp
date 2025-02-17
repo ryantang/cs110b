@@ -12,9 +12,9 @@ The HAND_SIZE and card values are defined as constants, but will work if changed
 #include <vector>
 using namespace std;
 
-const int HAND_SIZE = 5;
-const int LOWEST_NUM = 2;
-const int HIGHEST_NUM = 9;
+const int HAND_SIZE = 8;
+const int LOWEST_NUM = 1;
+const int HIGHEST_NUM = 13;
 
 bool containsPair(const int hand[]);
 bool containsTwoPair(const int hand[]);
@@ -53,6 +53,11 @@ int main() {
     }
 }
 
+
+
+
+
+
 //containsPair() takes the integer array `hand[]` as a parameter. It returns true if there 
 // is one or more pairs in the hand. Note that three of a kind, four of a kind, and so forth do not
 // count as pairs.
@@ -60,11 +65,21 @@ bool containsPair(const int hand[]) {
     return setsOf(2, hand) > 0;
 }
 
+
+
+
+
+
 //containsTwoPair() takes the integer array `hand[]` as a parameter. It returns true if there are exactly 
 //two pairs in the hand.
 bool containsTwoPair(const int hand[]) {
     return setsOf(2, hand) == 2;
 }
+
+
+
+
+
 
 //containsThreeOfaKind() takes the integer array `hand[]` as a parameter. It returns true if there are at least
 //one set of three cards with the same value in the hand. Four of a kind and five of a kind does not 
@@ -72,6 +87,11 @@ bool containsTwoPair(const int hand[]) {
 bool containsThreeOfaKind(const int hand[]) {
     return setsOf(3, hand) > 0;
 }
+
+
+
+
+
 
 //containsStraight() takes the integer array `hand[]` as a parameter. It returns true if there are five cards in a row.
 //In the case the HAND_SIZE is higher than 5, the function will return true if any five cards are in a row.
@@ -86,11 +106,21 @@ bool containsStraight(const int hand[]) {
     return false;
 }
 
+
+
+
+
+
 //containsFullHouse() takes the integer array `hand[]` as a parameter. It returns true if there is a pair and a three of a 
 //kind in the hand.
 bool containsFullHouse(const int hand[]) {
     return containsPair(hand) && containsThreeOfaKind(hand);
 }
+
+
+
+
+
 
 //containsFourOfaKind() takes the integer array `hand[]` as a parameter. It returns true if there are four or more cards 
 //with the same value.
@@ -104,6 +134,11 @@ bool containsFourOfaKind(const int hand[]) {
     return false;
 }
 
+
+
+
+
+
 //countCards() is a helper method that takes the integer array `hand[]` as a parameter. It returns a vector to store the number 
 // of cards with each value using the value as the index. For example, if hand is {2, 3, 3, 5, 5},
 // cardsByValues[2] = 1 (there is one two), 
@@ -116,6 +151,11 @@ vector<int> countCards(const int hand[]) {
     }
     return cardsByValues;
 }
+
+
+
+
+
 
 //setsOf() is a helper function that takes the integer `setSize` and the integer array `hand[]` as parameters.
 //This function returns the number of sets of cards that match the `setSize` parameter.
@@ -132,6 +172,11 @@ int setsOf(int setSize, const int hand[]) {
     return count;
 }
 
+
+
+
+
+
 //fiveCardsInaRowStartingat() is a helper function that takes the integer `start` and the integer array `hand[]` as parameters.
 //`start` is the value of the first card in the sequence. The function returns true if there are five cards in a row.
 bool fiveCardsInaRowStartingat(int start, const int hand[]) {
@@ -143,6 +188,11 @@ bool fiveCardsInaRowStartingat(int start, const int hand[]) {
     }
     return true;
 }
+
+
+
+
+
 
 //runTests() is a helper function that runs tests on the functions in this program.
 //It was useful to run regularly while coding, but I have removed runTests() from main() for the final version.
