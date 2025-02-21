@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <cassert>
+#include <string> //TODO: Delete after testing
 using namespace std;
 void runTests();
 
@@ -13,13 +14,15 @@ class Fraction {
 public:
     Fraction();
     Fraction(int n, int d);
-    void print();
-    Fraction multipliedBy(Fraction f);
-    Fraction dividedBy(Fraction f);
-    Fraction addedTo(Fraction f);
-    Fraction subtract(Fraction f);
-    bool isEqualTo(Fraction f);
+    void print() const;
+    Fraction multipliedBy(const Fraction& f) const;
+    Fraction dividedBy(const Fraction& f) const;
+    Fraction addedTo(const Fraction& f) const;
+    Fraction subtract(const Fraction& f) const;
+    bool isEqualTo(const Fraction& f) const;
+    string toString() const; //TODO: Delete function after testing
 private:
+    void simplify();
     int numerator;
     int denominator;
 };
@@ -30,18 +33,39 @@ Fraction::Fraction() {
     denominator = 1;
 }
 
-
-
 Fraction::Fraction(int n, int d) {
+    assert(d != 0);
     numerator = n;
     denominator = d;
+    simplify();
 }
 
+void Fraction::simplify() {
+    int smaller;
+    bool foundGCF = false;
 
+    if (numerator < denominator) {
+        smaller = numerator;
+    } else {
+        smaller = denominator;
+    }
+
+    for (int i = smaller; i > 1; i--) {
+        if (numerator % i == 0 && denominator % i == 0 && !foundGCF) {
+            foundGCF = true;
+            numerator = numerator/i;
+            denominator = denominator/i;
+        }
+    }
+}
+
+string Fraction::toString() const {
+    return to_string(numerator) + '/' + to_string(denominator);
+}
 
 // The Fraction::multipliedBy() takes a Fraction object as a parameter
 // and returns a Fraction object that is the product of the two fractions.
-Fraction Fraction::multipliedBy(Fraction f) {
+Fraction Fraction::multipliedBy(const Fraction& f) const {
     Fraction result;
     result.numerator = numerator * f.numerator;
     result.denominator = denominator * f.denominator;
@@ -55,7 +79,7 @@ Fraction Fraction::multipliedBy(Fraction f) {
 
 // The Fraction::dividedBy() takes a Fraction object as a parameter,
 // divides the Fraction object by the parameter, and returns the resulting Fraction object.
-Fraction Fraction::dividedBy(Fraction f) {
+Fraction Fraction::dividedBy(const Fraction& f) const{
     Fraction result;
     result.numerator = numerator * f.denominator;
     result.denominator = denominator * f.numerator;
@@ -69,7 +93,7 @@ Fraction Fraction::dividedBy(Fraction f) {
 
 // The Fraction::addedTo() takes a Fraction object as a parameter,
 // adds the Fraction object to the parameter, and returns the resulting Fraction object.
-Fraction Fraction::addedTo(Fraction f) {
+Fraction Fraction::addedTo(const Fraction& f) const {
     Fraction result;
     result.numerator = numerator * f.denominator + f.numerator * denominator;
     result.denominator = denominator * f.denominator;
@@ -83,7 +107,7 @@ Fraction Fraction::addedTo(Fraction f) {
 
 // The Fraction::subtract() takes a Fraction object as a parameter,
 // subtracts the parameter from the Fraction object, and returns the resulting Fraction object.
-Fraction Fraction::subtract(Fraction f) {
+Fraction Fraction::subtract(const Fraction& f) const {
     Fraction result;
     result.numerator = numerator * f.denominator - f.numerator * denominator;
     result.denominator = denominator * f.denominator;
@@ -97,7 +121,7 @@ Fraction Fraction::subtract(Fraction f) {
 
 // The Fraction::isEqualTo() takes a Fraction object as a parameter,
 // checks if the Fraction object is equal to the parameter, and returns a boolean.
-bool Fraction::isEqualTo(Fraction f) {
+bool Fraction::isEqualTo(const Fraction& f) const {
     return (numerator * f.denominator == denominator * f.numerator);
 }
 
@@ -107,7 +131,7 @@ bool Fraction::isEqualTo(Fraction f) {
 
 
 // The Fraction::print() prints the Fraction object in the format "numerator/denominator".
-void Fraction::print() {
+void Fraction::print() const {
     cout << numerator << "/" << denominator;
 }
 
@@ -177,14 +201,20 @@ int main()
 
 // runTests() is a helpr function that runs a series of tests to verify the Fraction class.
 void runTests() {
-    Fraction result;
     Fraction f1(9, 8);
     Fraction f2(2, 3);
     Fraction f3(4, 6);
+    Fraction result;
+    Fraction defaultFraction;
+    Fraction zero(0, 1);
 
+    assert(f1.toString() == "9/8");
+    assert(f3.toString() == "2/3"); //simplification should work
+    
     assert(f1.isEqualTo(f1));
     assert(!f1.isEqualTo(f2));
     assert(f2.isEqualTo(f3));
+    assert(defaultFraction.isEqualTo(zero));
 
     result = f1.multipliedBy(f2);
     Fraction expected1(18,24);
