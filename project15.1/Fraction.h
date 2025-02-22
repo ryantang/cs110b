@@ -71,7 +71,6 @@ class Fraction {
         Fraction addedTo(const Fraction& f) const;
         Fraction subtract(const Fraction& f) const;
         bool isEqualTo(const Fraction& f) const;
-        string toString() const; //TODO: Delete function after testing
     private:
         void simplify();
         int numerator;

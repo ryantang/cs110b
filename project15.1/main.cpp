@@ -1,24 +1,23 @@
 /* Ryan Tang | 2/20/2025 | CS 110B with instructor David Harden | project14.1/main.cpp
-    This program creates a class that represents a fraction. The class has methods to set the numerator and denominator, 
-    multiply two fractions, divide two fractions, add two fractions, subtract two fractions, and check if two fractions are equal. 
-    The main() function demonstrates the class by creating two fractions, performing the operations, and printing the results.
+    This program creates a class that represents a fraction. The class has methods to set 
+    the numerator and denominator, multiply two fractions, divide two fractions, add two 
+    fractions, subtract two fractions, and check if two fractions are equal. The main() 
+    function demonstrates the class by creating two fractions, performing the operations, 
+    and printing the results.
+
+    The client code in main.cpp demonstrates the Fraction class by creating
+    two Fraction objects, performing operations, and printing the results.
 */
 
 #include <iostream>
 #include <cassert>
-#include <string> //TODO: Delete after testing
 #include "Fraction.h"
 using namespace std;
 
 void runTests();
 
-
-
-
-// main() demonstrates the Fraction class by creating two Fraction objects, performing operations, and printing the results.
 int main()
 {
-    runTests();
     Fraction f1(9,8);
     Fraction f2(2,3);
     Fraction result;
@@ -96,8 +95,6 @@ void runTests() {
     Fraction result;
     Fraction defaultFraction;
     Fraction zero(0, 1);
-
-    assert(f1.toString() == "9/8");
     
     assert(f1.isEqualTo(f1));
     assert(!f1.isEqualTo(f2));
@@ -120,23 +117,24 @@ void runTests() {
     Fraction expected4(11,24);
     assert(result.isEqualTo(expected4));
 
-    //Test simplification
-    assert(f3.toString() == "2/3");
+    //Test simplification (commented out, because it requires the toString() function)
+    // assert(f1.toString() == "9/8");
+    // assert(f3.toString() == "2/3");
 
-    result = f4.multipliedBy(f2);
-    assert(result.toString() == "1/2");
+    // result = f4.multipliedBy(f2);
+    // assert(result.toString() == "1/2");
 
-    result = f4.dividedBy(f4);
-    assert(result.toString() == "1/1");
+    // result = f4.dividedBy(f4);
+    // assert(result.toString() == "1/1");
 
-    result = f1.addedTo(f1);
-    assert(result.toString() == "9/4");
+    // result = f1.addedTo(f1);
+    // assert(result.toString() == "9/4");
 
-    result = f4.subtract(f5);
-    assert(result.toString() == "1/2");
+    // result = f4.subtract(f5);
+    // assert(result.toString() == "1/2");
 
-    result = f1.subtract(f1);
-    assert(result.toString() == "0/1"); //test zero simplification case
+    // result = f1.subtract(f1);
+    // assert(result.toString() == "0/1"); //test zero simplification case
 
     cout << "Tests completed." << endl;
 }

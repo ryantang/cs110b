@@ -8,7 +8,6 @@ The Fraction class also has a simplify() method that simplifies the fraction to 
 
 #include <iostream>
 #include <cassert>
-#include <string>
 #include "Fraction.h"
 using namespace std;
 
@@ -68,15 +67,6 @@ void Fraction::simplify() {
             denominator = denominator/i;
         }
     }
-}
-
-
-
-
-
-
-string Fraction::toString() const {
-    return to_string(numerator) + '/' + to_string(denominator);
 }
 
 
