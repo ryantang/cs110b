@@ -26,10 +26,10 @@ int main() {
 
 
 // 5. Using cout and x (not p1), display the value of x.
-    cout << x << endl;
+    cout << "# 5: x contains: " << x << endl;
 
 // 6. Using cout and the pointer p1 (not x), display the value of x.
-    cout << *p1 << endl;
+    cout << "# 6: x contains: " << *p1 << endl;
 
 // 7. Store the address of y into p1.
     p1 = &y;
@@ -64,9 +64,9 @@ noNegatives(&y);
 //
 //     x is: 0
 //     y is: 99
-cout << "x is: " << *p2 << endl;
+cout << "#13: x is: " << *p2;
 p2 = &y;
-cout << "y is: " << *p2 << endl;
+cout << " and y is: " << *p2 << endl;
 
 
 // 14. Create an int array named 'a' with two elements. Make p2 point to the first element
@@ -84,11 +84,11 @@ p2[0] = x;
 p2[1] = y;
 
 // 17. Using cout and p2 only, display the address of the first element in a.
-cout << p2[0] << endl;
+cout << "#17 The address of the first element is " << p2 << endl;
 
 // 18. Using cout and p2 only, display the address of the second element in a. Leave p2
 //     pointing to the first element of a.   Don't use pointer arithmetic.
-cout << p2[1] << endl;
+cout << "#18: The address of the second element is " << &p2[1] << endl;
 
 // 19. Use p1, p2, and temp to swap the values in the two elements of array 'a'.
 //     (first point p1 at a[0], then point p2 at a[1], then do not use "a" again. After this
@@ -102,8 +102,8 @@ temp = *p1;
 
 // 20. Display the values of the two elements.
 //     (The first element should be 99, the second 0).
-cout << "a[0] is: " << a[0] << endl;
-cout << "a[1] is: " << a[1] << endl;
+cout << "#20: The first element in a[] is " << a[0];
+cout << " and the second element in a[] is " << a[1] << endl;
 
 
 // 21. Write a function named 'swap' that accepts two pointers to integers as arguments, and
@@ -113,14 +113,12 @@ cout << "a[1] is: " << a[1] << endl;
 // 22. Invoke your swap() function with the addresses of x and y (using the address-of
 //     operator in the arguments), then print their values.  (x should be 99, y should be 0).
 swap(&x, &y);
-cout << "x is: " << x << endl;
-cout << "y is: " << y << endl;
+cout << "#22: Now, x contains: " << x << " and y contains: " << y << endl;
 
 // 23. Invoke your swap function with the address of the two elements in array 'a', then
 //     print their values.  (a[0] should be 0, a[1] should be 99).
-swap(&x, &y);
-cout << "x is: " << x << endl;
-cout << "y is: " << y << endl;
+swap(a[0], a[1]);
+cout << "#23: Now, a[0] contains: " << a[0] << " and a[1] contains: " << a[1] << endl;
 
 return 0;
 } /* end of function main() */
