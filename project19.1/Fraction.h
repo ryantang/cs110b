@@ -3,34 +3,45 @@
 
 #include <iostream>
 
+namespace cs_fraction {
+    class Fraction {
+        public: 
 
-class Fraction {
-    public: 
-        Fraction();
-        Fraction(int setNumerator);
-        Fraction(int setNumerator, int setDenominator);
+            Fraction(int setNumerator = 0, int setDenominator = 1);
 
-        friend bool operator==(const Fraction& left, const Fraction& right);
-        friend bool operator<(const Fraction& left, const Fraction& right);
-        friend bool operator<=(const Fraction& left, const Fraction& right);
-        friend bool operator>(const Fraction& left, const Fraction& right);
-        friend bool operator>=(const Fraction& left, const Fraction& right);
-        friend bool operator!=(const Fraction& left, const Fraction& right);
+            friend bool operator==(const Fraction& left, const Fraction& right);
+            friend bool operator<(const Fraction& left, const Fraction& right);
+            friend bool operator<=(const Fraction& left, const Fraction& right);
+            friend bool operator>(const Fraction& left, const Fraction& right);
+            friend bool operator>=(const Fraction& left, const Fraction& right);
+            friend bool operator!=(const Fraction& left, const Fraction& right);
 
-        friend Fraction operator+(const Fraction& left, const Fraction& right);
-        // Fraction operator+(const Fraction& f) const;
+            friend Fraction operator+(const Fraction& left, const Fraction& right);
+            friend Fraction operator-(const Fraction& left, const Fraction& right);
+            friend Fraction operator*(const Fraction& left, const Fraction& right);
+            friend Fraction operator/(const Fraction& left, const Fraction& right);
 
-        friend std::ostream& operator<<(std::ostream& out, const Fraction& f);
-        // Fraction multipliedBy(const Fraction& f) const;
-        // Fraction dividedBy(const Fraction& f) const;
-        // Fraction addedTo(const Fraction& f) const;
-        // Fraction subtract(const Fraction& f) const;
-        // bool isEqualTo(const Fraction& f) const;
-    private:
-        void simplify();
-        int numerator;
-        int denominator;
-};
+            Fraction& operator+=(const Fraction& f);
+            Fraction& operator-=(const Fraction& f);
+            Fraction& operator*=(const Fraction& f);
+            Fraction& operator/=(const Fraction& f);
+            Fraction& operator++();
+            Fraction operator++(int);
+            Fraction& operator--();
+            Fraction operator--(int);
+            
+            friend std::ostream& operator<<(std::ostream& out, const Fraction& f);
+            friend std::istream& operator>>(std::istream& in, Fraction& f);
 
+
+            void testSimplify(int expectedNumerator, int expectedDenominator);
+        private:
+            void simplify();
+            void normalize();
+            int numerator;
+            int denominator;
+
+    };
+}
 
 #endif
