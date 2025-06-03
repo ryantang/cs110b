@@ -1,4 +1,4 @@
-/* Ryan Tang | 1/29/2025 | CS 110B with instructor David Harden | project4.5/main.cpp
+/* 
 This program is a number guessing game prompts the user to think of a number between 1 and 100.
 The program then guesses a number, prompts the user to enter 'l' if the number is lower, 'h' if the number is higher, 
 or 'c' if the number is correct. Upon completion, the program asks the user if they would like to play again.
@@ -11,7 +11,7 @@ const int LOWER_LIMIT = 1;
 const int UPPER_LIMIT = 100;
 
 void playOneGame();
-void getUserResponseToGuess(int mid, char &response);
+void getUserResponseToGuess(int guess, char& result);
 int getMidpoint(int low, int high);
 
 int main() {
@@ -38,7 +38,8 @@ void playOneGame() {
 
     while (result != 'c') {
         int mid = getMidpoint(low, high);
-
+        
+        cout << "low: " << low << " high: " << high << " mid: " << mid << endl;
         getUserResponseToGuess(mid, result);
         if (result == 'l') {
             high = mid - 1;

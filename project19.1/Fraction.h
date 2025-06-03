@@ -1,5 +1,4 @@
-/* Ryan Tang | 3/24/2025 | CS 110 with instructor David Harden | project 19.1/Fraction.h
-
+/* 
 This header file declares the Fraction class. The Fraction class has a single contructor that takes
 two integers as parameters (numerator and denominator), and initializes the Fraction object to the given values.
 This class can handle negative fractions. It will simplify the fraction to its lowest terms and normalize 

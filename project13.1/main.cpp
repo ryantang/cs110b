@@ -1,6 +1,5 @@
-/* Ryan Tang | 2/6/2025 | CS 110B with instructor David Harden | project13.1/main.cpp
-
-This program is a poker hand evaluator (minus face cards and suits). The user is prompted to enter 5 numeric cards,
+/* 
+This program is a poker hand evaluator (minus face cards and suits). The user is prompted to enter 6 numeric cards,
 and the program will determine the best hand that can be made from those cards. Possible hands are four of a kind, full house,
 straight, three of a kind, two pair, pair, and high card.
 

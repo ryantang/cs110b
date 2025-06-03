@@ -1,4 +1,4 @@
-/* Ryan Tang | 2/20/2025 | CS 110B with instructor David Harden | project14.1/main.cpp
+/* 
     This program creates a class that represents a fraction. The class has methods to set 
     the numerator and denominator, multiply two fractions, divide two fractions, add two 
     fractions, subtract two fractions, and check if two fractions are equal. The main() 

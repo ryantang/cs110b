@@ -1,4 +1,4 @@
-/* Ryan Tang | 3/2/2025 | CS 110B with instructor David Harden | project17.1/main.cpp
+/* 
     This program contains functions that manipulate C-style strings. 
     The functions include lastIndexOf, reverse, replace, isPalindrome, toupper, and numLetters.
 

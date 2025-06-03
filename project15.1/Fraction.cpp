@@ -21,10 +21,10 @@ Fraction::Fraction() {
 
 
 
-Fraction::Fraction(int n, int d) {
-    assert(d != 0);
-    numerator = n;
-    denominator = d;
+Fraction::Fraction(int setNumerator, int setDenominator) {
+    assert(setDenominator != 0);
+    numerator = setNumerator;
+    denominator = setDenominator;
     simplify();
 }
 

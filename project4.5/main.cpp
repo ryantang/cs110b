@@ -1,3 +1,11 @@
+/*
+This is a magic date calculator. A date is considered magic if the month 
+multiplied by the day equals the two-digit year. Input from the user is a date
+in the form of MM/DD/YY, though the "/" can be replaced with any non-numeric character.
+
+The output shows whether the date is magic or not.
+*/
+
 #include <iostream>
 using namespace std;
 

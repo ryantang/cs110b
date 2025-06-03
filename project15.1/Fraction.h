@@ -1,4 +1,4 @@
-/* Ryan Tang | 2/22/2025 | CS 110B with instructor David Harden | project15.1/Fraction.h
+/* 
     
     This header file declares the Fraction class. The Fraction class has two constructors.
     The default contructor takes no parameters and initializes the Fraction object to 0/1.
@@ -14,10 +14,12 @@
     Precondition: None
     Postcondition: Initializes the Fraction object to 0/1.
 
-    void Fraction::Fraction(int n, int d)
+    
+    void Fraction::Fraction(int setNumerator, int setDenominator)
 
     Precondition: The denominator cannot be 0. Neither of the parameters can be negative.
     Postcondition: Initializes the Fraction object to the given values. Simplifies the fraction to its lowest terms.
+
 
     void Fraction::print() const
 
@@ -64,7 +66,7 @@ using namespace std;
 class Fraction {
     public:
         Fraction();
-        Fraction(int n, int d);
+        Fraction(int setNumerator, int setDenominator);
         void print() const;
         Fraction multipliedBy(const Fraction& f) const;
         Fraction dividedBy(const Fraction& f) const;
